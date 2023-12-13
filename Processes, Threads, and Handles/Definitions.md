@@ -34,7 +34,7 @@ A process handle is a reference to a process object. You can use a process handl
 
 A thread handle is a reference to a thread object. You can use a thread handle to manipulate many of the operating system resources that are associated with a thread. For example, you can use a thread handle to wait for a thread to terminate, specify the processor that a thread runs on, and retrieve the exit code of a thread.
 
-# Abaut the Windows API
+# About the Windows API
 
 The Windows API, informally WinAPI, is Microsoft's core set of application programming interfaces (APIs) available in the Microsoft Windows operating systems. The name Windows API collectively refers to several different platform implementations that are often referred to by their own names (for example, Win32 API); see the versions section. Almost all Windows programs interact with the Windows API. On the Windows NT line of operating systems, a small number (such as programs started early in the Windows startup process) use the Native API.
 
