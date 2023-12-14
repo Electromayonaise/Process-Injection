@@ -5,8 +5,9 @@
 </div>
 <div id="user-content-toc">
 
-# Process-Injection
-Malware development for educational purposes, introduction to Windows API and process injection
+# About the repo 
+
+Malware development for educational purposes, introduction to Windows API and process injection. 
 
 ## Malware Development
 
@@ -44,7 +45,7 @@ A process handle is a reference to a process object. You can use a process handl
 
 A thread handle is a reference to a thread object. You can use a thread handle to manipulate many of the operating system resources that are associated with a thread. For example, you can use a thread handle to wait for a thread to terminate, specify the processor that a thread runs on, and retrieve the exit code of a thread.
 
-## About the Windows API
+## Windows API
 
 The Windows API, informally WinAPI, is Microsoft's core set of application programming interfaces (APIs) available in the Microsoft Windows operating systems. The name Windows API collectively refers to several different platform implementations that are often referred to by their own names (for example, Win32 API); see the versions section. Almost all Windows programs interact with the Windows API. On the Windows NT line of operating systems, a small number (such as programs started early in the Windows startup process) use the Native API.
 
@@ -62,4 +63,28 @@ One thing to note is the hungarian notation, which we will often see in the Wind
 - sz for a zero-terminated string
 - b for a boolean value (usually an integer with value 0 or 1)
 - i for an integer
+
+# Process Injection 
+
+As I said before, process injection is a technique used by computer attackers to introduce a running process into another process, typically during the execution of malicious code. The general idea is to inject a malicious code into a process that is already running on the system, and then execute that code via the process. This is done by manipulating the memory space of the target process. The injected code runs under the same privileges as the target process. This is a very common technique used by malware to hide its presence on the system.
+
+There are several ways to inject a process, but we will focus on shellcode injection and DLL injection.
+
+## Shellcode Injection
+
+Shellcode injection is a technique used to exploit a software vulnerability. It is the exploitation of a software bug in order to gain control of a computer system or allow privilege escalation or a denial of service on a computer system. Shellcode injection consists of the following main parts:
+
+- The shellcode
+- The shellcode injector
+- The target
+
+The shellcode is the code that we want to inject into the target process. The shellcode injector is the code that will inject the shellcode into the target process. The target is the process that we want to inject the shellcode into.
+
+The code for shellcode injection on this repo is in the file `shellcodeInjection.cpp`. But the overall idea is to create a process in suspended mode, allocate memory in the process, write the shellcode into the allocated memory, and then resume the process. The shellcode on the file won't do anything, it's just a sample shellcode to show how the injection works. To get the shellcode, you can run a Kali Linux machine and use msfvenom to generate a shellcode. For example, to generate a shellcode that will spawn a reverse shell to your Kali Linux machine, and then inject it into a process to gain access to the machine. 
+
+## DLL Injection
+
+A DLL (Dynamic Link Library) is a library that contains code and data that can be used by more than one program at the same time. For example, in Windows operating systems, the Comdlg32 DLL performs common dialog box related functions. Therefore, each program can use the functionality that is contained in this DLL to implement an Open dialog box. This helps promote code reuse and efficient memory usage. The code in a DLL is usually shared among all the processes that use the DLL; that is, they occupy a single place in physical memory, and do not take up space in the page file. This is why a DLL is called a dynamic link library.
+
+DLL injection is a technique used to inject a DLL into a process. DLL injection is often used by malware to hide its presence on the system. The code for DLL injection on this repo is in the file `dllInjection.cpp` The general idea is to inject a DLL into a process that is already running on the system, and then execute that DLL via the process. This is done by manipulating the memory space of the target process. The injected DLL runs under the same privileges as the target process. As you can see, it follows pretty much the same idea as shellcode injection, but instead of injecting shellcode, we inject a DLL. It is often used in game hacking, where you inject a DLL into a game process to gain access to the game's memory and then manipulate it to your advantage.
 
